@@ -14,17 +14,31 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      # - name: use bun
+      #   uses: oven-sh/setup-bun@v2
+
+      # - name: bun install and build 
+      #   run: |
+      #     bun install
+      #     bun run build
+      #   env:
+      #     DB_FILE_NAME: ${{ secrets.DB_FILE_NAME }}
+      #     USERNAME: ${{ secrets.USERNAME }}
+      #     PASSWORD: ${{ secrets.PASSWORD }}
+
+      - name: set up node.js version
         uses: actions/setup-node@v3
         with:
           node-version: '22.x'
-          cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci
+      - name: install pnpm
+        run: npm install -g pnpm
 
-      - name: Build
-        run: npm run build
+      - name: install dependencies 
+        run: pnpm install --frozen-lockfile
+
+      - name: build
+        run: pnpm run build 
         env:
           DB_FILE_NAME: ${{ secrets.DB_FILE_NAME }}
           USERNAME: ${{ secrets.USERNAME }}
@@ -34,10 +48,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: |
-            dist
-            package.json
-            package-lock.json
+          path: .
 
   deploy:
     runs-on: ubuntu-latest
