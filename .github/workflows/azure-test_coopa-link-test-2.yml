@@ -14,13 +14,34 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: use bun
-        uses: oven-sh/setup-bun@v2
+      # - name: use bun
+      #   uses: oven-sh/setup-bun@v2
 
-      - name: bun install and build 
-        run: |
-          bun install
-          bun run build
+      # - name: bun install and build 
+      #   run: |
+      #     bun install
+      #     bun run build
+      #   env:
+      #     DB_FILE_NAME: ${{ secrets.DB_FILE_NAME }}
+      #     USERNAME: ${{ secrets.USERNAME }}
+      #     PASSWORD: ${{ secrets.PASSWORD }}
+
+      - name: set up node.js version
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22.x'
+
+      - name: install pnpm
+        # run: npm install -g pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: install dependencies 
+        run: pnpm install --frozen-lockfile
+
+      - name: build
+        run: pnpm run build 
         env:
           DB_FILE_NAME: ${{ secrets.DB_FILE_NAME }}
           USERNAME: ${{ secrets.USERNAME }}
@@ -29,7 +50,7 @@ jobs:
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
-          name: bun-app
+          name: node-app
           path: .
 
   deploy:
@@ -40,7 +61,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
-          name: bun-app
+          name: node-app
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
