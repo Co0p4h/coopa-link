@@ -9,13 +9,9 @@
   "dependencies": {
     "@hono/node-server": "^1.19.0",
     "@libsql/client": "^0.15.14",
-    "@libsql/core": "^0.15.15",
-    "@libsql/hrana-client": "^0.8.0",
     "dotenv": "^17.2.2",
     "drizzle-orm": "^0.44.5",
-    "hono": "^4.9.6",
-    "libsql": "^0.5.22",
-    "promise-limit": "^2.7.0"
+    "hono": "^4.9.6"
   },
   "devDependencies": {
     "@types/node": "^20.11.17",

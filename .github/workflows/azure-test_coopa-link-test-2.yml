@@ -40,6 +40,9 @@ jobs:
       - name: install dependencies 
         run: pnpm install 
 
+      - name: run drizzle migrations
+        run: npx drizzle-kit push 
+
       - name: build
         run: pnpm run build 
         env:

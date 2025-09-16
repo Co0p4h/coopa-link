@@ -2,8 +2,8 @@ import 'dotenv/config';
 import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
 import { basicAuth } from 'hono/basic-auth'
-import { db } from '../db/db.js'
-import * as table from '../db/schema.js'
+import { db } from './db/db.js'
+import * as table from './db/schema.js'
 import { eq, sql } from 'drizzle-orm'
 
 const app = new Hono()
