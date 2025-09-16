@@ -42,11 +42,11 @@ jobs:
 
       - name: run drizzle migrations
         run: npx drizzle-kit push 
+        env:
+          DB_FILE_NAME: ${{ secrets.DB_FILE_NAME }}
 
       - name: build
         run: pnpm run build 
-        env:
-          DB_FILE_NAME: ${{ secrets.DB_FILE_NAME }}
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
