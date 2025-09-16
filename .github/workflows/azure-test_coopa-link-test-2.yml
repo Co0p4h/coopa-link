@@ -14,18 +14,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # - name: use bun
-      #   uses: oven-sh/setup-bun@v2
-
-      # - name: bun install and build 
-      #   run: |
-      #     bun install
-      #     bun run build
-      #   env:
-      #     DB_FILE_NAME: ${{ secrets.DB_FILE_NAME }}
-      #     USERNAME: ${{ secrets.USERNAME }}
-      #     PASSWORD: ${{ secrets.PASSWORD }}
-
       - name: install pnpm
         uses: pnpm/action-setup@v4
         with:
