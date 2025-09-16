@@ -1,11 +1,11 @@
-import { defineConfig } from "drizzle-kit";
 import 'dotenv/config';
+import { defineConfig } from 'drizzle-kit';
 
 export default defineConfig({
-  dialect: "sqlite",
-  schema: "./db/schema.ts",
-  out: "./drizzle/",
-	dbCredentials: {
+  out: './drizzle',
+  schema: './src/db/schema.ts',
+  dialect: 'sqlite',
+  dbCredentials: {
     url: process.env.DB_FILE_NAME!,
   },
 });
