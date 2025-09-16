@@ -14,6 +14,9 @@ importers:
       '@libsql/client':
         specifier: ^0.15.14
         version: 0.15.15
+      '@libsql/core':
+        specifier: ^0.15.15
+        version: 0.15.15
       dotenv:
         specifier: ^17.2.2
         version: 17.2.2
