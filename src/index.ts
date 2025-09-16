@@ -14,7 +14,7 @@ app.get('/', (c) => {
   })
 })
 
-app.get('/links', basicAuth({ username: process.env.USERNAME!, password: process.env.PASSWORD! }), async (c) => {
+app.get('/links', basicAuth({ username: process.env.APP_BASIC_AUTH_USERNAME!, password: process.env.APP_BASIC_AUTH_PASSWORD! }), async (c) => {
   try {
     const links_result = await db
       .select()
@@ -35,7 +35,7 @@ const isValidUrl = (url: string): boolean => {
   }
 }
 
-app.post('/links', basicAuth({ username: process.env.USERNAME!, password: process.env.PASSWORD! }), async (c) => {
+app.post('/links', basicAuth({ username: process.env.APP_BASIC_AUTH_USERNAME!, password: process.env.APP_BASIC_AUTH_PASSWORD! }), async (c) => {
   const { link_name, redirect_to } = await c.req.json();
 
   if (!link_name || !redirect_to) {
