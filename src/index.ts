@@ -96,7 +96,7 @@ app.notFound((c) => {
 
 serve({
   fetch: app.fetch,
-  port: 8080
+  port: parseInt(process.env.PORT!) || 8080
 }, (info) => {
   console.log(`server is running on http://localhost:${info.port}`);
 })
