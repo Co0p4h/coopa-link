@@ -14,7 +14,8 @@
     "dotenv": "^17.2.2",
     "drizzle-orm": "^0.44.5",
     "hono": "^4.9.6",
-    "libsql": "^0.5.22"
+    "libsql": "^0.5.22",
+    "promise-limit": "^2.7.0"
   },
   "devDependencies": {
     "@types/node": "^20.11.17",

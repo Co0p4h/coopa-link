@@ -32,6 +32,9 @@ importers:
       libsql:
         specifier: ^0.5.22
         version: 0.5.22
+      promise-limit:
+        specifier: ^2.7.0
+        version: 2.7.0
     devDependencies:
       '@types/node':
         specifier: ^20.11.17
