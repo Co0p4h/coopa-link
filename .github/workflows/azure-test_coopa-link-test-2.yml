@@ -1,4 +1,4 @@
-name: Build and deploy Node.js app to Azure Web App - plancake-test
+name: build and deploy node.js app to azure web app
 
 on:
   push:
