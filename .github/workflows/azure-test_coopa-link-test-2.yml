@@ -26,16 +26,19 @@ jobs:
       #     USERNAME: ${{ secrets.USERNAME }}
       #     PASSWORD: ${{ secrets.PASSWORD }}
 
-      - name: set up node.js version
-        uses: actions/setup-node@v3
+      - name: install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
         with:
           node-version: '22.x'
-
-      - name: install pnpm
-        run: npm install -g pnpm
+          cache: "pnpm"
 
       - name: install dependencies 
-        run: pnpm install --frozen-lockfile
+        run: pnpm install 
 
       - name: build
         run: pnpm run build 
